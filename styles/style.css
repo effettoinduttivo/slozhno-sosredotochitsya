@@ -1,5 +1,388 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
+  inline-size: 1024px;
+  padding: 0 10px;
+  background-color: var(--bg-color, #000028);
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+}
+
+.header {
+  min-block-size: 668px;
+  margin-block-end: 40px;
+  position: relative;
+  background-image: var(--bg-image, url(../images/cover-image-dark.png));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: grid;
+  grid-template-rows: 1fr min-content 1fr;
+  justify-items: end;
+  align-items: center;
+}
+
+.decorated-zone::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  inline-size: 25px;
+  block-size: 25px;
+  border-inline-end: 1px solid var(--heading-color, #FF0070);
+  border-block-start: 1px solid var(--heading-color, #FF0070);
+}
+
+.decorative-lamp {
+  display: var(--rec-lamp, block);
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.decorative-lamp::before {
+  content: "REC";
+  position: absolute;
+  top: 10px;
+  right: 38px;
+  color: var(--heading-color, #FF0070);
+  text-transform: uppercase;
+}
+
+.decorative-lamp::after {
+  content: "";
+  position: absolute;
+  top: 18px;
+  right: 19px;
+  inline-size: 9px;
+  block-size: 9px;
+  background-color: var(--heading-color, #FF0070);
+  border-radius: 50%;
+  box-shadow: 0px 0px 4px 2px var(--heading-color, #FF0070);
+}
+
+.header__theme-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.header__theme-menu-button {
+  padding: 1.5px 13px;
+  border: none;
+  background-color: transparent;
+  font-family: "IBM Plex mono", sans-serif;
+  font-size: var(--main-text-size, 18px);
+  color: var(--heading-color, #FF0070);
+  text-transform: lowercase;
+  cursor: pointer;
+}
+
+.header__theme-menu-button:hover {
+  outline: 1px solid var(--button-hover-color, rgb(255, 0, 112, 0.4));
+}
+
+.header__theme-menu-button_active {
+  pointer-events: none;
+  outline: 1px solid var(--heading-color, #FF0070);
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-block-end: 1px solid var(--heading-color, #FF0070);
+}
+
+.header__title {
+  justify-self: start;
+  color: var(--title-color, #DB00FF);
+  text-shadow: 4px 4px 0 var(--shadow-color, #FF0070);
+  font-size: var(--title-font-size, clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem));
+  line-height: var(--title-line-height, 95.7px);
+}
+
+.title-decor {
+  background-color: var(--accent-color, #FF0070);
+  color: var(--article-title-color, #000028); 
+  font-size: var(--main-text-size, 18px);
+  font-weight: 700;
+  line-height: var(--main-text-line-height, 23.4px);
+}
+
+.decorated-zone::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  inline-size: 25px;
+  block-size: 25px;
+  border-inline-start: 1px solid var(--heading-color, #FF0070);
+  border-block-end: 1px solid var(--heading-color, #FF0070);
+}
+
+.content {
+  margin-block-end: 40px;
+  display: flex; 
+  flex-direction: column;
+  gap: 50px;
+  line-height: var(--main-text-line-height, 23.4px);
+}
+
+.section {
+  display: grid;
+  gap: 20px;
+}
+
+.section__title {
+  font-size: var(--main-text-size, 18px); 
+  font-weight: 700;
+  color: var(--heading-color, #FF0070);
+}
+
+.section__text {
+  margin-block-start: 10px;
+  font-size: var(--main-text-size, 18px);
+  color: var(--main-text-color, #F1B2CE);
+}
+
+.section__link {
+  text-decoration: none;
+  text-shadow: 2.5px 1.5px 0 var(--accent-color, #FF0070); 
+}
+
+.section__link:hover {
+  border-block-end: 1px solid var(--main-text-color, #F1B2CE);
+}
+
+.section__link:focus {
+  outline: none;
+}
+
+.section__link:focus-visible {
+  outline: 1px solid var(--main-text-color, #F1B2CE);
+}
+
+.article-title {
+  font-weight: 400;
+}
+
+.gallery {
+  display: grid;
+  gap: 10px;
+}
+
+.gallery__image {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.footer {
+  min-block-size: 667px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__title {
+  color: var(--title-color, #DB00FF);
+  text-shadow: 2px 2px 0 var(--shadow-color, #FF0070);
+  font-size: var(--title-font-size, clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem));
+  line-height: var(--title-line-height, 95.7px);
+}
+
+.footer__decorated-zone::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  inline-size: 25px;
+  block-size: 25px;
+  border-inline-end: 1px solid var(--heading-color, #FF0070);
+  border-block-start: 1px solid var(--heading-color, #FF0070);
+}
+
+.footer__decorated-zone::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  inline-size: 25px;
+  block-size: 25px;
+  border-inline-start: 1px solid var(--heading-color, #FF0070);
+  border-block-end: 1px solid var(--heading-color, #FF0070);
+}
+
+@media (768px <= width < 1024px) {
+  .page {
+    padding: 0 20px;
+  }
+  .header {
+    min-block-size: 1024px;
+    margin-block-end: 60px;
+  }
+  .header__title {
+    --title-font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+  .header__text {
+    max-inline-size: 50%;
+  }
+  .decorated-zone::before {
+    top: 20px;
+    right: 20px;
+  }
+  .decorated-zone::after {
+    bottom: 20px;
+    left: 20px;
+  }
+  .content {
+    margin-block-end: 60px;
+    gap: 80px;
+  }
+  .section__two-columns {
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: repeat(6, min-content);
+  }
+  .title-two-columns {
+    grid-row: 1 / 7;
+  }
+  .article {
+    grid-column: 2;
+  }
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: min-content 25.6% 30% auto;
+  }
+  .gallery__title {
+    grid-column: 1 / -1;
+  }
+  .gallery__image__sunset {
+    grid-column: 1 / span 2;
+  }
+  .gallery__image__ice-cream {
+    grid-row: 2 / 4;
+    grid-column: 3;
+  }
+  .gallery__image__tape {
+    grid-row: 3 / 5;
+    grid-column: 1;
+  }
+  .gallery__image__books {
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+  }
+  .gallery__image__street {
+    grid-row: 4;
+    grid-column: 2 / 4;
+  }
+  .footer {
+    min-block-size: 1024px;
+  }
+  .footer__decorated-zone::before {
+    top: 20px;
+    right: 20px;
+  }
+  .footer__decorated-zone::after {
+    bottom: 20px;
+    left: 20px;
+  }
+}
+
+@media (width >= 1024px) {
+  .page {
+    padding: 20px 20px 0 0;
+  }
+  .header {
+    min-block-size: 768px;
+    margin-block-end: 60px;
+  }
+  .header__theme-menu {
+    justify-self: center;
+    align-self: start;
+  }
+  .header__theme-menu-list {
+    flex-direction: row;
+  }
+  .header__title {
+    --title-font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+    --shadow-color: #FF0070;
+  }
+  .header__text {
+    max-inline-size: 50%;
+  }
+  .decorated-zone::before {
+    top: 20px;
+    right: 20px;
+  }
+  .decorated-zone::after {
+    bottom: 20px;
+    left: 20px;
+  }
+  .content {
+    padding-inline-start: 20px;
+    margin-block-end: 60px;
+    gap: 80px;
+  }
+  .section__two-columns {
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: repeat(6, min-content);
+  }
+  .title-two-columns {
+    grid-row: 1 / 7;
+  }
+  .section__three-columns {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .title-three-columns {
+    grid-column: 1 / 2;
+  }
+  .article-three-columns {
+    grid-row: 2;
+  }
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: min-content 25.6% 30% auto;
+  }
+  .gallery__title {
+    grid-column: 1 / -1;
+  }
+  .gallery__image__sunset {
+    grid-column: 1 / span 2;
+  }
+  .gallery__image__ice-cream {
+    grid-row: 2 / 4;
+    grid-column: 3;
+  }
+  .gallery__image__tape {
+    grid-row: 3 / 5;
+    grid-column: 1;
+  }
+  .gallery__image__books {
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+  }
+  .gallery__image__street {
+    grid-row: 4;
+    grid-column: 2 / 4;
+  }
+  .footer {
+    min-block-size: 768px;
+    padding-inline-start: 20px;
+  }
+  .footer__title {
+    --title-font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+    --shadow-color: #FF0070;
+  }
+  .footer__decorated-zone::before {
+    top: 20px;
+    right: 20px;
+  }
+  .footer__decorated-zone::after {
+    bottom: 20px;
+    left: 20px;
+  }
 }
