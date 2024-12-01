@@ -8,13 +8,13 @@
   --bg-color: #000028;
   --bg-image: url(../images/cover-image-dark.png);
   --rec-lamp: block;
-  --title-color: #DB00FF;
-  --shadow-color: #FF0070;
-  --heading-color: #FF0070;
+  --title-color: #db00ff;
+  --shadow-color: #ff0070;
+  --heading-color: #ff0070;
   --button-hover-color: rgb(255, 0, 112, 0.4);
   --article-title-color: #000028;
-  --main-text-color: #F1B2CE;
-  --accent-color: #FF0070;
+  --main-text-color: #f1b2ce;
+  --accent-color: #ff0070;
   --main-font: "IBM Plex mono", sans-serif;
   --title-font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
   --main-text-size: 18px;
