@@ -4,18 +4,20 @@
   min-inline-size: 375px;
   max-inline-size: 1024px;
   background-color: var(--bg-color, #000028);
+  background-image: var(--bg-image, url(../images/cover-image-dark.png));
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
 }
 
 .header {
-  min-block-size: 100vh;
+  block-size: 100vh;
+  min-block-size: 668px;
   padding: 10px;
   margin-block-end: 40px;
   position: relative;
-  background-image: var(--bg-image, url(../images/cover-image-dark.png));
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   display: grid;
   grid-template-rows: 1fr min-content 1fr;
   justify-items: end;
@@ -31,6 +33,17 @@
   block-size: 25px;
   border-inline-end: 1px solid var(--heading-color, #ff0070);
   border-block-start: 1px solid var(--heading-color, #ff0070);
+}
+
+.decorated-zone::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  inline-size: 25px;
+  block-size: 25px;
+  border-inline-start: 1px solid var(--heading-color, #ff0070);
+  border-block-end: 1px solid var(--heading-color, #ff0070);
 }
 
 .decorative-lamp {
@@ -81,6 +94,7 @@
   color: var(--heading-color, #ff0070);
   text-transform: lowercase;
   cursor: pointer;
+  transition-duration: 2s;
 }
 
 .header__theme-menu-button:hover {
@@ -117,17 +131,6 @@
   font-size: var(--main-text-size, 18px);
   font-weight: 700;
   line-height: var(--main-text-line-height, 23.4px);
-}
-
-.decorated-zone::after {
-  content: "";
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  inline-size: 25px;
-  block-size: 25px;
-  border-inline-start: 1px solid var(--heading-color, #ff0070);
-  border-block-end: 1px solid var(--heading-color, #ff0070);
 }
 
 .content {
@@ -173,7 +176,14 @@
   outline: 1px solid var(--main-text-color, #f1b2ce);
 }
 
-.article-title {
+.advices__list {
+  margin-block-start: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.advice__title {
   font-weight: 400;
 }
 
@@ -191,7 +201,8 @@
 }
 
 .footer {
-  min-block-size: 100vh;
+  block-size: 100vh;
+  min-block-size: 668px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -208,24 +219,10 @@
   line-height: var(--title-line-height, 95.7px);
 }
 
-@media (768px <= width < 1024px) {
+@media (width >= 768px) {
   .header {
     margin-block-end: 60px;
     padding: 20px 20px 20px 0;
-  }
-  .decorative-lamp::before {
-    top: 20px;
-    right: 48px;
-  }
-  .decorative-lamp::after {
-    top: 28px;
-    right: 29px;
-  }
-  .header__title {
-    --title-font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
-  }
-  .header__text {
-    max-inline-size: calc(50% - 10px);
   }
   .decorated-zone::before {
     top: 20px;
@@ -235,21 +232,35 @@
     bottom: 20px;
     left: 20px;
   }
+  .decorative-lamp::before {
+    top: 20px;
+    right: 48px;
+  }
+  .decorative-lamp::after {
+    top: 28px;
+    right: 29px;
+  }
+  .header__title,
+  .footer__title {
+    --title-font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+  .header__text {
+    max-inline-size: calc(50% - 10px);
+  }
   .content {
     margin-block-end: 60px;
     padding: 0 20px;
     gap: 80px;
   }
-  .section__two-columns {
+  .section-why,
+  .section-advices {
     grid-template-columns: 1fr 2fr;
   }
-  .title-two-columns {
-    grid-row: 1 / 3;
-  }
-  .article-two-columns {
+  .section-why .article,
+  .section-advices .article {
     grid-column: 2;
   }
-  .title-three-columns {
+  .section-causes .section__title {
     max-inline-size: 32%;
   }
   .gallery {
@@ -259,38 +270,26 @@
   .gallery__title {
     grid-column: 1 / -1;
   }
-  .gallery__image__sunset {
+  .gallery__image_sunset {
     grid-column: 1 / span 2;
   }
-  .gallery__image__ice-cream {
+  .gallery__image_ice-cream {
     grid-row: 2 / 4;
     grid-column: 3;
   }
-  .gallery__image__tape {
+  .gallery__image_tape {
     grid-row: 3 / 5;
   }
-  .gallery__image__books {
+  .gallery__image_books {
     grid-row: 3;
     grid-column: 2;
   }
-  .gallery__image__street {
+  .gallery__image_street {
     grid-column: 2 / 4;
   }
 }
 
 @media (width >= 1024px) {
-  .header {
-    margin-block-end: 60px;
-    padding: 20px 20px 20px 0;
-  }
-  .decorative-lamp::before {
-    top: 20px;
-    right: 48px;
-  }
-  .decorative-lamp::after {
-    top: 28px;
-    right: 29px;
-  }
   .header__theme-menu {
     padding-inline-start: 20px;
     justify-self: center;
@@ -299,72 +298,21 @@
   .header__theme-menu-list {
     flex-direction: row;
   }
-  .header__title {
-    --title-font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  .header__title,
+  .footer__title {
     --shadow-color: #ff0070;
   }
   .header__text {
-    max-inline-size: calc(50% - 10px);
     margin-block-start: 15px;
   }
-  .decorated-zone::before {
-    top: 20px;
-    right: 20px;
-  }
-  .decorated-zone::after {
-    bottom: 20px;
-    left: 20px;
-  }
-  .content {
-    margin-block-end: 60px;
-    padding: 0 20px;
-    gap: 80px;
-  }
-  .section__two-columns {
-    grid-template-columns: 1fr 2fr;
+  .section-why,
+  .section-advices {
     column-gap: 10px;
   }
-  .title-two-columns {
-    grid-row: 1 / 3;
-  }
-  .article-two-columns {
-    grid-column: 2;
-  }
-  .section__three-columns {
+  .section-causes {
     grid-template-columns: repeat(3, 1fr);
   }
-  .title-three-columns {
-    grid-column: 1 / 2;
-  }
-  .article-three-columns {
-    grid-row: 2;
-  }
-  .gallery {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  .gallery__title {
-    grid-column: 1 / -1;
-  }
-  .gallery__image__sunset {
-    grid-column: 1 / span 2;
-  }
-  .gallery__image__ice-cream {
-    grid-row: 2 / 4;
-    grid-column: 3;
-  }
-  .gallery__image__tape {
-    grid-row: 3 / 5;
-  }
-  .gallery__image__books {
-    grid-row: 3;
-    grid-column: 2;
-  }
-  .gallery__image__street {
-    grid-column: 2 / 4;
-  }
-  .footer__title {
-    --title-font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
-    --shadow-color: #ff0070;
+  .section-causes .section__title {
+    grid-column: 1 / 4;
   }
 }
